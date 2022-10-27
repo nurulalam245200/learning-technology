@@ -9,6 +9,7 @@ import SignUp from "../../Pages/LogIn/SignUp/SignUp";
 import Blog from "../../Pages/Others/Blog/Blog";
 import FAQSite from "../../Pages/Others/FAQSite/FAQSite";
 import PremiumOffer from "../../Pages/Others/PremiumOffer/PremiumOffer";
+import Profile from "../../Pages/Others/Profile/Profile";
 import TermsAndCondition from "../../Pages/Others/TermsAndCondition/TermsAndCondition";
 import PrivetRoutes from "../PrivateRoutes/PrivetRoutes";
 
@@ -65,6 +66,22 @@ export const router = createBrowserRouter([
       {
         path: "/fqa",
         element: <FAQSite></FAQSite>,
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivetRoutes>
+            <Profile></Profile>
+          </PrivetRoutes>
+        ),
+      },
+      {
+        path: "*",
+        element: (
+          <div className="text-warning fs-1 fw-bold">
+            This is Not Our Page !!
+          </div>
+        ),
       },
     ],
   },
