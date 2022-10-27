@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const CoursesCard = ({ course }) => {
   const { id, name, image, details, price } = course;
   return (
-    <Card style={{ width: "75%" }}>
+    <Card className="mx-auto" style={{ width: "75%" }}>
       <Card.Img variant="top" src={image} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>

@@ -61,7 +61,7 @@ const SignUp = () => {
       >
         Registation Form Here!!
       </Form.Text>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group className="mb-3 mt-3" controlId="formBasicEmail">
         <Form.Label>Full Name</Form.Label>
         <Form.Control type="text" name="name" placeholder="Enter Name" />
       </Form.Group>
