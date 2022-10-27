@@ -12,7 +12,7 @@ const LeftNav = () => {
       .then((data) => setCatgories(data));
   }, []);
   return (
-    <div>
+    <div className="position-sticky">
       <h4>Total Courses :{categories.length}</h4>
       <div>
         {categories.map((category) => (
