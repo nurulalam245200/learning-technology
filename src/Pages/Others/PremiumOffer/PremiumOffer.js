@@ -3,7 +3,6 @@ import { useLoaderData } from "react-router-dom";
 import logo from "../../../images/welcome.gif";
 const PremiumOffer = () => {
   const data = useLoaderData();
-  console.log(data);
   const { name } = data;
   return (
     <div>
