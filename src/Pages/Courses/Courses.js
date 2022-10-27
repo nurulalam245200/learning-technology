@@ -1,10 +1,19 @@
 import React from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import LeftNav from "../Shared/LeftNav/LeftNav";
 
 const Courses = () => {
   return (
-    <div>
-      <h1>This Courses</h1>
-    </div>
+    <Container>
+      <Row>
+        <Col lg="3">
+          <LeftNav></LeftNav>
+        </Col>
+        <Col lg="9"></Col>
+      </Row>
+    </Container>
   );
 };
 

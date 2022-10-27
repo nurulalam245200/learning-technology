@@ -2,6 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { NavLink } from "react-router-dom";
 const Header = () => {
   return (
     <div>
@@ -10,11 +11,28 @@ const Header = () => {
           <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#features">Home</Nav.Link>
-              <Nav.Link href="#pricing">Courses</Nav.Link>
-              <Nav.Link href="#deets">FAQ</Nav.Link>
-              <Nav.Link href="#deets">Blog</Nav.Link>
+            <Nav className="d-flex align-items-center">
+              <NavLink className="text-decoration-none text-dark me-3" to="/">
+                Home
+              </NavLink>
+              <NavLink
+                className="text-decoration-none text-dark me-3"
+                to="/courses"
+              >
+                Courses
+              </NavLink>
+              <NavLink
+                className="text-decoration-none text-dark me-3"
+                to="/faq"
+              >
+                FAQ
+              </NavLink>
+              <NavLink
+                className="text-decoration-none text-dark me-3"
+                to="/blog"
+              >
+                Blog
+              </NavLink>
               <Nav.Link eventKey={2} href="#memes">
                 Light Theme
               </Nav.Link>
