@@ -33,6 +33,7 @@ const SignUp = () => {
         navigate("/login");
         handleUpdateUserProfile(name, photoURL);
         handleEmailVerify();
+        toast.success("please check Your Email");
       })
       .catch((error) => {
         setError(error.message);

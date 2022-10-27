@@ -6,6 +6,7 @@ import Courses from "../../Pages/Courses/Courses";
 import Home from "../../Pages/Home/Home";
 import LogIn from "../../Pages/LogIn/LogIn/LogIn";
 import SignUp from "../../Pages/LogIn/SignUp/SignUp";
+import Blog from "../../Pages/Others/Blog/Blog";
 import FAQSite from "../../Pages/Others/FAQSite/FAQSite";
 import PremiumOffer from "../../Pages/Others/PremiumOffer/PremiumOffer";
 import TermsAndCondition from "../../Pages/Others/TermsAndCondition/TermsAndCondition";
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
             <PremiumOffer></PremiumOffer>
           </PrivetRoutes>
         ),
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
       },
       {
         path: "/fqa",

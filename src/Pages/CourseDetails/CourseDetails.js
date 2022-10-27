@@ -8,6 +8,15 @@ const CourseDetails = () => {
   const { name, details, price, image } = detailsData;
   return (
     <Card className="mx-auto" style={{ width: "50%" }}>
+      <Card.Text
+        style={{
+          backgroundColor: "darkred",
+          padding: "10px",
+          borderRadius: "8px",
+        }}
+      >
+        <Link className="text-decoration-none text-white">Download PDF</Link>
+      </Card.Text>
       <Card.Img variant="top" src={image} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
