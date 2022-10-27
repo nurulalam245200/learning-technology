@@ -8,14 +8,20 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import logo from "../../../images/logo.png";
 import { FaUser } from "react-icons/fa";
+import { useState } from "react";
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [mode, setMode] = useState(false);
   const handleLogOut = () => {
     logOut()
       .then(() => {})
       .catch((error) => {
         console.log(error);
       });
+  };
+  const handleTheme = () => {
+    if (mode === true) {
+    }
   };
   return (
     <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -39,6 +45,11 @@ const Header = () => {
             <NavLink className="text-decoration-none me-3" to="/blog">
               Blog
             </NavLink>
+          </Nav>
+          <Nav>
+            <div onClick={handleTheme}>
+              {mode ? <Button>Dark</Button> : <Button>Light</Button>}
+            </div>
           </Nav>
           <Nav>
             {user?.uid ? (
