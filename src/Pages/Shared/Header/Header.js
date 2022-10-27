@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { Button, Image } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
@@ -7,11 +7,12 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import logo from "../../../images/logo.png";
-import { FaUser } from "react-icons/fa";
-import { useState } from "react";
+import { FaMoon, FaSun, FaUser } from "react-icons/fa";
+import "../../../App.css";
+
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
-  const [mode, setMode] = useState(false);
+  const [mode, setMode] = useState("light");
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -20,9 +21,15 @@ const Header = () => {
       });
   };
   const handleTheme = () => {
-    if (mode === true) {
+    if (mode === "light") {
+      setMode("dark");
+    } else {
+      setMode("light");
     }
   };
+  useEffect(() => {
+    document.body.className = mode;
+  }, [mode]);
   return (
     <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
       <Container>
@@ -46,10 +53,16 @@ const Header = () => {
               Blog
             </NavLink>
           </Nav>
-          <Nav>
-            <div onClick={handleTheme}>
-              {mode ? <Button>Dark</Button> : <Button>Light</Button>}
-            </div>
+          <Nav className="me-3">
+            {mode === "light" ? (
+              <button className="border border-light" onClick={handleTheme}>
+                <FaMoon></FaMoon> Toggle Dark
+              </button>
+            ) : (
+              <button className="border border-light" onClick={handleTheme}>
+                <FaSun></FaSun> Toggle light
+              </button>
+            )}
           </Nav>
           <Nav>
             {user?.uid ? (

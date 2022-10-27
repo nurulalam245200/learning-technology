@@ -2,10 +2,12 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import { Link, useLoaderData } from "react-router-dom";
 import { FaMoneyBill } from "react-icons/fa";
+import { useRef } from "react";
 
 const CourseDetails = () => {
   const detailsData = useLoaderData();
   const { name, details, price, image } = detailsData;
+  const handleDetailsPdf = () => {};
   return (
     <Card className="mx-auto" style={{ width: "50%" }}>
       <Card.Text
