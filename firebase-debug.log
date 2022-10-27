@@ -1,0 +1,28 @@
+[debug] [2022-10-27T16:48:15.725Z] ----------------------------------------------------------------------
+[debug] [2022-10-27T16:48:15.734Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-10-27T16:48:15.735Z] CLI Version:   11.15.0
+[debug] [2022-10-27T16:48:15.736Z] Platform:      win32
+[debug] [2022-10-27T16:48:15.737Z] Node Version:  v16.15.1
+[debug] [2022-10-27T16:48:15.749Z] Time:          Thu Oct 27 2022 22:48:15 GMT+0600 (Bangladesh Standard Time)
+[debug] [2022-10-27T16:48:15.750Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-10-27T16:48:15.963Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-10-27T16:48:15.965Z] > authorizing via signed-in user (jack245200@gmail.com)
+[debug] [2022-10-27T16:48:15.965Z] [iam] checking project learning-technology-1c2e0 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-10-27T16:48:15.969Z] > refreshing access token with scopes: []
+[debug] [2022-10-27T16:48:15.974Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2022-10-27T16:48:15.975Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-10-27T16:48:16.427Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2022-10-27T16:48:16.428Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-10-27T16:48:16.446Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/learning-technology-1c2e0:testIamPermissions [none]
+[debug] [2022-10-27T16:48:16.447Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/learning-technology-1c2e0:testIamPermissions x-goog-quota-user=projects/learning-technology-1c2e0
+[debug] [2022-10-27T16:48:16.447Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/learning-technology-1c2e0:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-10-27T16:48:16.987Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/learning-technology-1c2e0:testIamPermissions 200
+[debug] [2022-10-27T16:48:16.987Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/learning-technology-1c2e0:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-10-27T16:48:16.990Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/learning-technology-1c2e0 [none]
+[debug] [2022-10-27T16:48:38.115Z] Failed to make request to https://firebase.googleapis.com/v1beta1/projects/learning-technology-1c2e0
+[debug] [2022-10-27T16:48:38.381Z] FirebaseError: Failed to make request to https://firebase.googleapis.com/v1beta1/projects/learning-technology-1c2e0
+    at RetryOperation._fn (C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:242:31)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to get Firebase project learning-technology-1c2e0. Please make sure the project exists and your account has permission to access it.
