@@ -4,10 +4,15 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import { FaGoogle, FaGithub } from "react-icons/fa";
+import { GoogleAuthProvider } from "firebase/auth";
+import { useState } from "react";
 
 const SignUp = () => {
-  const { createUser, upadateUserProfile } = useContext(AuthContext);
-
+  const { createUser, upadateUserProfile, googleSignIn } =
+    useContext(AuthContext);
+  const [error, setError] = useState("");
+  const googleProvider = new GoogleAuthProvider();
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -20,19 +25,33 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        handleUpdateUserProfile();
         form.reset();
+        setError("");
+        handleUpdateUserProfile(name, photoURL);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  const handleUpdateUserProfile = () => {
-    upadateUserProfile()
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const userInfo = {
+      displayName: name,
+      photoURL: photoURL,
+    };
+    upadateUserProfile(userInfo)
       .then(() => {})
       .catch((e) => {
         console.log(e);
       });
+  };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((e) => setError(e));
   };
   return (
     <Form style={{ width: "50%" }} className="mx-auto" onSubmit={handleSubmit}>
@@ -79,9 +98,24 @@ const SignUp = () => {
           }
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <p>{error}</p>
+      <Button className="mb-2" variant="primary" type="submit">
         Register
       </Button>
+      <Form.Text className="text-warning">{error}</Form.Text>
+      <div className="mx-auto w-100">
+        <Button
+          className="mb-2"
+          style={{ width: "100%" }}
+          onClick={handleGoogleSignIn}
+          variant="outline-primary"
+        >
+          <FaGoogle></FaGoogle> Sign In With Google
+        </Button>
+        <Button style={{ width: "100%" }} variant="outline-dark">
+          <FaGithub></FaGithub> Sign In With Git
+        </Button>
+      </div>
     </Form>
   );
 };
