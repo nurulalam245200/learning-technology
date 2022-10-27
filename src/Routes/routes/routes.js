@@ -58,7 +58,7 @@ export const router = createBrowserRouter([
         element: <TermsAndCondition></TermsAndCondition>,
       },
       {
-        path: "/premium",
+        path: "/primium/:id",
         element: (
           <PrivetRoutes>
             <PremiumOffer></PremiumOffer>

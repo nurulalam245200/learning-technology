@@ -7,7 +7,7 @@ const ref = React.createRef();
 
 const CourseDetails = () => {
   const detailsData = useLoaderData();
-  const { name, details, price, image } = detailsData;
+  const { id, name, details, price, image } = detailsData;
   return (
     <div ref={ref}>
       <Card className="mx-auto" style={{ width: "70%" }}>
@@ -28,7 +28,7 @@ const CourseDetails = () => {
             <p>
               <FaMoneyBill className="fs-3 text-warning"></FaMoneyBill> ${price}
             </p>
-            <Link to="/premium">Get Premium</Link>
+            <Link to={`/primium/${id}`}>Get Premium</Link>
           </div>
         </Card.Body>
       </Card>

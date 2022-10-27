@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 const CoursesCard = ({ course }) => {
@@ -19,8 +18,10 @@ const CoursesCard = ({ course }) => {
             <>{details}</>
           )}
         </Card.Text>
-        <div className="">
-          <Button variant="primary">Get Primium</Button>
+        <div className="d-flex justify-content-between align-items-center">
+          <Link className="text-decoration-none" to={`/course/${id}`}>
+            Go Details
+          </Link>
           <p className="text-muetd">${price}</p>
         </div>
       </Card.Body>
