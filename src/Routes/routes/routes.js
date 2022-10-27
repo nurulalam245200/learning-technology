@@ -64,6 +64,10 @@ export const router = createBrowserRouter([
             <PremiumOffer></PremiumOffer>
           </PrivetRoutes>
         ),
+        loader: ({ params }) =>
+          fetch(
+            `https://learning-technology-server.vercel.app/course/${params.id}`
+          ),
       },
       {
         path: "/blog",
