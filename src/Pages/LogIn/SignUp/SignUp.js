@@ -2,16 +2,18 @@ import React from "react";
 import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { GoogleAuthProvider } from "firebase/auth";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 const SignUp = () => {
-  const { createUser, upadateUserProfile, googleSignIn } =
+  const { createUser, upadateUserProfile, googleSignIn, EmailVerification } =
     useContext(AuthContext);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
   const [accept, setAccept] = useState(false);
   const googleProvider = new GoogleAuthProvider();
   const handleSubmit = (event) => {
@@ -28,10 +30,12 @@ const SignUp = () => {
         console.log(user);
         form.reset();
         setError("");
+        navigate("/login");
         handleUpdateUserProfile(name, photoURL);
+        handleEmailVerify();
       })
       .catch((error) => {
-        console.log(error);
+        setError(error.message);
       });
   };
   const handleUpdateUserProfile = (name, photoURL) => {
@@ -42,7 +46,7 @@ const SignUp = () => {
     upadateUserProfile(userInfo)
       .then(() => {})
       .catch((e) => {
-        console.log(e);
+        setError(e.message);
       });
   };
 
@@ -52,7 +56,14 @@ const SignUp = () => {
         const user = result.user;
         console.log(user);
       })
-      .catch((e) => setError(e));
+      .catch((e) => setError(e.message));
+  };
+  const handleEmailVerify = () => {
+    EmailVerification()
+      .then(() => {})
+      .catch((e) => {
+        setError(e.message);
+      });
   };
   const handleTermsAndCondition = (event) => {
     setAccept(event.target.checked);
@@ -103,16 +114,17 @@ const SignUp = () => {
           }
         />
       </Form.Group>
-      <p>{error}</p>
-      <Button
-        className="mb-2"
-        variant="primary"
-        type="submit"
-        disabled={!accept}
-      >
-        Register
-      </Button>
-      <Form.Text className="text-warning">{error}</Form.Text>
+      <div className="d-flex justify-content-between">
+        <Button
+          className="mb-2"
+          variant="primary"
+          type="submit"
+          disabled={!accept}
+        >
+          Register
+        </Button>
+        <Form.Text className="text-success fw-semibold">{error}</Form.Text>
+      </div>
       <div className="mx-auto w-100">
         <Button
           className="mb-2"
