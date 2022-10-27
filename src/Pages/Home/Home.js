@@ -5,12 +5,12 @@ const Home = () => {
     <div className="mx-auto">
       <h1
         style={{ backgroundImage: "linear-gradient(darkblue, skyblue)" }}
-        className="text-light fs-1 fw-bold"
+        className="text-light fs-1 fw-bold text-center"
       >
         Welcome Our E-learning website
       </h1>
 
-      <p className="fs-5 fw-semibold">
+      <p className="fs-5 fw-semibold text-center">
         We are provide diffrent Types of Courses for you and Your Children. We
         want to share knowledge by our some ideas. <br /> We always care about
         you or your child future.We will do better for learning but you have to

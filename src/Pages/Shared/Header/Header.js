@@ -1,46 +1,85 @@
 import React from "react";
+import { useContext } from "react";
+import { Button, Image } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import logo from "../../../images/logo.png";
+import { FaUser } from "react-icons/fa";
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
-    <div>
-      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-        <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="d-flex align-items-center">
-              <NavLink className="text-decoration-none text-dark me-3" to="/">
-                Home
-              </NavLink>
-              <NavLink
-                className="text-decoration-none text-dark me-3"
-                to="/courses"
-              >
-                Courses
-              </NavLink>
-              <NavLink
-                className="text-decoration-none text-dark me-3"
-                to="/faq"
-              >
-                FAQ
-              </NavLink>
-              <NavLink
-                className="text-decoration-none text-dark me-3"
-                to="/blog"
-              >
-                Blog
-              </NavLink>
-              <Nav.Link eventKey={2} href="#memes">
-                Light Theme
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </div>
+    <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+      <Container>
+        <Image src={logo}></Image>
+        <Navbar.Brand className="text-primary fs-3 fw-semibold" href="#home">
+          Learning Technology
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto ms-4">
+            <NavLink className="text-decoration-none me-3" to="/">
+              Home
+            </NavLink>
+            <NavLink className="text-decoration-none me-3" to="/courses">
+              Courses
+            </NavLink>
+            <NavLink className="text-decoration-none me-3" to="/faq">
+              FAQ
+            </NavLink>
+            <NavLink className="text-decoration-none me-3" to="/blog">
+              Blog
+            </NavLink>
+          </Nav>
+          <Nav>
+            {user?.uid ? (
+              <>
+                <Button variant="primary" onClick={handleLogOut}>
+                  Log Out
+                </Button>
+                <span> {user?.displayName}</span>
+              </>
+            ) : (
+              <>
+                <Link
+                  className="text-decoration-none bg-primary text-white p-2 rounded me-2"
+                  to="/login"
+                >
+                  Log In
+                </Link>
+                <Link
+                  className="text-decoration-none bg-primary text-white p-2 rounded me-2"
+                  to="/register"
+                >
+                  Sign Up
+                </Link>
+              </>
+            )}
+
+            <Link to="/profile">
+              {user?.photoURL ? (
+                <Image
+                  roundedCircle
+                  style={{ height: "30px" }}
+                  src={user.photoURL}
+                ></Image>
+              ) : (
+                <FaUser></FaUser>
+              )}
+            </Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
