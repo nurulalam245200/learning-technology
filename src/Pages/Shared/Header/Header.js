@@ -33,7 +33,7 @@ const Header = () => {
             <NavLink className="text-decoration-none me-3" to="/courses">
               Courses
             </NavLink>
-            <NavLink className="text-decoration-none me-3" to="/faq">
+            <NavLink className="text-decoration-none me-3" to="/fqa">
               FAQ
             </NavLink>
             <NavLink className="text-decoration-none me-3" to="/blog">

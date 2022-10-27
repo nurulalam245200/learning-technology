@@ -6,7 +6,10 @@ import Courses from "../../Pages/Courses/Courses";
 import Home from "../../Pages/Home/Home";
 import LogIn from "../../Pages/LogIn/LogIn/LogIn";
 import SignUp from "../../Pages/LogIn/SignUp/SignUp";
+import FAQSite from "../../Pages/Others/FAQSite/FAQSite";
+import PremiumOffer from "../../Pages/Others/PremiumOffer/PremiumOffer";
 import TermsAndCondition from "../../Pages/Others/TermsAndCondition/TermsAndCondition";
+import PrivetRoutes from "../PrivateRoutes/PrivetRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +48,18 @@ export const router = createBrowserRouter([
       {
         path: "/terms",
         element: <TermsAndCondition></TermsAndCondition>,
+      },
+      {
+        path: "/premium",
+        element: (
+          <PrivetRoutes>
+            <PremiumOffer></PremiumOffer>
+          </PrivetRoutes>
+        ),
+      },
+      {
+        path: "/fqa",
+        element: <FAQSite></FAQSite>,
       },
     ],
   },

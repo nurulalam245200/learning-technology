@@ -1,7 +1,6 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { FaMoneyBill } from "react-icons/fa";
 
 const CourseDetails = () => {
@@ -17,7 +16,7 @@ const CourseDetails = () => {
           <p>
             <FaMoneyBill className="fs-3 text-warning"></FaMoneyBill> ${price}
           </p>
-          <Button variant="primary">Premium</Button>
+          <Link to="/premium">Get Premium</Link>
         </div>
       </Card.Body>
     </Card>

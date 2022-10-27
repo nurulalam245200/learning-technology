@@ -3,9 +3,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
-const LogIn = () => {
+const FAQSite = () => {
   const { userLogIn } = useContext(AuthContext);
-
   const handleLogInSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -59,4 +58,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default FAQSite;
