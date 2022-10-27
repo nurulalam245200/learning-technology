@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const TermsAndCondition = () => {
   return (
-    <div>
+    <div className="text-center">
       <h2>We Will Provide free access!!</h2>
       <p>But you have to full fill Terms And Condition</p>
       <p>

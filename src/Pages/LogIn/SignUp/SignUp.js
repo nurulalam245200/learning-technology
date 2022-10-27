@@ -12,6 +12,7 @@ const SignUp = () => {
   const { createUser, upadateUserProfile, googleSignIn } =
     useContext(AuthContext);
   const [error, setError] = useState("");
+  const [accept, setAccept] = useState(false);
   const googleProvider = new GoogleAuthProvider();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -53,6 +54,9 @@ const SignUp = () => {
       })
       .catch((e) => setError(e));
   };
+  const handleTermsAndCondition = (event) => {
+    setAccept(event.target.checked);
+  };
   return (
     <Form style={{ width: "50%" }} className="mx-auto" onSubmit={handleSubmit}>
       <Form.Text
@@ -91,6 +95,7 @@ const SignUp = () => {
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check
           type="checkbox"
+          onClick={handleTermsAndCondition}
           label={
             <>
               Accept <Link to="/terms">Terms And Condition</Link>
@@ -99,7 +104,12 @@ const SignUp = () => {
         />
       </Form.Group>
       <p>{error}</p>
-      <Button className="mb-2" variant="primary" type="submit">
+      <Button
+        className="mb-2"
+        variant="primary"
+        type="submit"
+        disabled={!accept}
+      >
         Register
       </Button>
       <Form.Text className="text-warning">{error}</Form.Text>
