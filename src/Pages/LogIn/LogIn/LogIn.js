@@ -4,13 +4,19 @@ import Form from "react-bootstrap/Form";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import { toast } from "react-hot-toast";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const LogIn = () => {
-  const { userLogIn, setLoading } = useContext(AuthContext);
+  const { userLogIn, setLoading, googleSignIn, gitHubSignIn } =
+    useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+  const gitHubProvider = new GithubAuthProvider();
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+
   const handleLogInSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -33,6 +39,28 @@ const LogIn = () => {
       })
       .finally(() => {
         setLoading(false);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((e) => setError(e.message));
+  };
+
+  const handleGitHubSignIn = () => {
+    gitHubSignIn(gitHubProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate(from, { replace: true });
+      })
+      .catch((e) => {
+        console.log(e);
       });
   };
   return (
@@ -66,11 +94,28 @@ const LogIn = () => {
           required
         />
       </Form.Group>
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between mb-2">
         <Button variant="primary" type="submit">
           Log In
         </Button>
-        <Form.Text className="ms-2 text-warning">{error}</Form.Text>
+        <Form.Text className="text-success fw-semibold">{error}</Form.Text>
+      </div>
+      <div className="mx-auto w-100">
+        <Button
+          className="mb-2"
+          style={{ width: "100%" }}
+          onClick={handleGoogleSignIn}
+          variant="outline-primary"
+        >
+          <FaGoogle></FaGoogle> Sign In With Google
+        </Button>
+        <Button
+          onClick={handleGitHubSignIn}
+          style={{ width: "100%" }}
+          variant="outline-dark"
+        >
+          <FaGithub></FaGithub> Sign In With Git
+        </Button>
       </div>
     </Form>
   );

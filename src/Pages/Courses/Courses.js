@@ -12,7 +12,7 @@ const Courses = () => {
     <Container>
       <Row>
         <Col lg="3">
-          <div className="position-absolute">
+          <div className="">
             <LeftNav></LeftNav>
           </div>
         </Col>

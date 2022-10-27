@@ -70,18 +70,17 @@ const Header = () => {
                 <Button variant="primary" onClick={handleLogOut}>
                   Log Out
                 </Button>
-                <span> {user?.displayName}</span>
               </>
             ) : (
               <>
                 <Link
-                  className="text-decoration-none bg-primary text-white p-2 rounded me-2"
+                  className="text-decoration-none bg-primary text-white p-2 rounded me-3"
                   to="/login"
                 >
                   Log In
                 </Link>
                 <Link
-                  className="text-decoration-none bg-primary text-white p-2 rounded me-2"
+                  className="text-decoration-none bg-primary text-white p-2 rounded"
                   to="/register"
                 >
                   Sign Up
@@ -92,6 +91,8 @@ const Header = () => {
             <Link to="/profile">
               {user?.photoURL ? (
                 <Image
+                  className="ms-2"
+                  title={user?.displayName}
                   roundedCircle
                   style={{ height: "30px" }}
                   src={user.photoURL}

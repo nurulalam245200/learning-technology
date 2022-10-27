@@ -43,6 +43,11 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, provider);
   };
 
+  const gitHubSignIn = (provider) => {
+    setLoading(true);
+    return signInWithPopup(auth, provider);
+  };
+
   const emailVerification = () => {
     setLoading(true);
     return sendEmailVerification(auth.currentUser);
@@ -67,6 +72,7 @@ const AuthProvider = ({ children }) => {
     googleSignIn,
     userLogIn,
     emailVerification,
+    gitHubSignIn,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
